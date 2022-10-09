@@ -2,23 +2,23 @@ const dotenv = require('dotenv')
 
 let ENV_FILE_NAME = '';
 switch (process.env.NODE_ENV) {
-	case 'production':
-		ENV_FILE_NAME = '.env.production';
-		break;
-	case 'staging':
-		ENV_FILE_NAME = '.env.staging';
-		break;
-	case 'test':
-		ENV_FILE_NAME = '.env.test';
-		break;
-	case 'development':
-	default:
-		ENV_FILE_NAME = '.env';
-		break;
+  case 'production':
+    ENV_FILE_NAME = '.env.production';
+    break;
+  case 'staging':
+    ENV_FILE_NAME = '.env.staging';
+    break;
+  case 'test':
+    ENV_FILE_NAME = '.env.test';
+    break;
+  case 'development':
+  default:
+    ENV_FILE_NAME = '.env';
+    break;
 }
 
 try {
-	dotenv.config({ path: process.cwd() + '/' + ENV_FILE_NAME });
+  dotenv.config({ path: process.cwd() + '/' + ENV_FILE_NAME });
 } catch (e) {
 }
 
@@ -57,8 +57,10 @@ const plugins = [
 module.exports = {
   projectConfig: {
     // redis_url: REDIS_URL,
-    database_url: DATABASE_URL,
-    database_type: "postgres",
+    // database_url: DATABASE_URL,
+    // database_type: "postgres",
+    database_database: "./medusa-db.sql",
+    database_type: "sqlite",
     store_cors: STORE_CORS,
     admin_cors: ADMIN_CORS,
     database_extra:
